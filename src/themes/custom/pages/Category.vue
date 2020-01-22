@@ -126,7 +126,7 @@ export default {
   data () {
     return {
       mobileFilters: false,
-      defaultColumn: 3,
+      defaultColumn: 4,
       loadingProducts: false,
       loading: true
     }
