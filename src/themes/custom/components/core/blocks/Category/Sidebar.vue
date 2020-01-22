@@ -13,64 +13,67 @@
         {{ $t('Clear filters') }}
       </span>
     </h4>
-    <div
-      v-for="(filter, filterIndex) in availableFilters"
-      :key="filterIndex"
-    >
-      <h5>
-        {{ $t(filterIndex + '_filter') }}
-      </h5>
+    <div class="row">
+      <div
+        v-for="(filter, filterIndex) in availableFilters"
+        :key="filterIndex"
+        class="col-sm-12 col-md-3"
+      >
+        <h5>
+          {{ $t(filterIndex + '_filter') }}
+        </h5>
 
-      <div v-if="filterIndex==='color'">
-        <color-selector
-          context="category"
-          code="color"
-          v-for="(color, index) in filter"
-          :key="index"
-          :variant="color"
-          :selected-filters="getCurrentFilters"
-          @change="$emit('changeFilter', $event)"
-        />
-      </div>
-      <div v-else-if="filterIndex==='size'">
-        <size-selector
-          context="category"
-          code="size"
-          class="size-select mr10 mb10"
-          v-for="(size, index) in sortById(filter)"
-          :key="index"
-          :variant="size"
-          :selected-filters="getCurrentFilters"
-          @change="$emit('changeFilter', $event)"
-        />
-      </div>
-      <div v-else-if="filterIndex==='price'">
-        <price-selector
-          context="category"
-          class="price-select mb10 block"
-          code="price"
-          v-for="(price, index) in filter"
-          :key="index"
-          :id="price.id"
-          :from="price.from"
-          :to="price.to"
-          :content="price.label"
-          :variant="price"
-          :selected-filters="getCurrentFilters"
-          @change="$emit('changeFilter', $event)"
-        />
-      </div>
-      <div v-else class="sidebar__inline-selecors">
-        <generic-selector
-          context="category"
-          class="mr10 mb10 block"
-          :code="filterIndex"
-          v-for="(option, index) in filter"
-          :key="index"
-          :variant="option"
-          :selected-filters="getCurrentFilters"
-          @change="$emit('changeFilter', $event)"
-        />
+        <div v-if="filterIndex==='color'">
+          <color-selector
+            context="category"
+            code="color"
+            v-for="(color, index) in filter"
+            :key="index"
+            :variant="color"
+            :selected-filters="getCurrentFilters"
+            @change="$emit('changeFilter', $event)"
+          />
+        </div>
+        <div v-else-if="filterIndex==='size'">
+          <size-selector
+            context="category"
+            code="size"
+            class="size-select mr10 mb10"
+            v-for="(size, index) in sortById(filter)"
+            :key="index"
+            :variant="size"
+            :selected-filters="getCurrentFilters"
+            @change="$emit('changeFilter', $event)"
+          />
+        </div>
+        <div v-else-if="filterIndex==='price'">
+          <price-selector
+            context="category"
+            class="price-select mb10 block"
+            code="price"
+            v-for="(price, index) in filter"
+            :key="index"
+            :id="price.id"
+            :from="price.from"
+            :to="price.to"
+            :content="price.label"
+            :variant="price"
+            :selected-filters="getCurrentFilters"
+            @change="$emit('changeFilter', $event)"
+          />
+        </div>
+        <div v-else class="sidebar__inline-selecors">
+          <generic-selector
+            context="category"
+            class="mr10 mb10 block"
+            :code="filterIndex"
+            v-for="(option, index) in filter"
+            :key="index"
+            :variant="option"
+            :selected-filters="getCurrentFilters"
+            @change="$emit('changeFilter', $event)"
+          />
+        </div>
       </div>
     </div>
     <!-- add the custom controls to other available filters set in config.products.defaultFilters; must be numeric field in ES
@@ -134,6 +137,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
+  width: 100%;
   &__header {
     justify-content: space-between;
     min-height: 47px;

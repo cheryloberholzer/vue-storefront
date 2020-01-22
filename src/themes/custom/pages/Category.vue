@@ -35,13 +35,13 @@
             />
           </div>
         </div>
+        <div class="row m0">
+          <sidebar :filters="getAvailableFilters" @changeFilter="changeFilter" />
+        </div>
       </div>
     </header>
     <div class="container pb60">
       <div class="row m0 pt15">
-        <div class="col-md-3 start-xs category-filters">
-          <sidebar :filters="getAvailableFilters" @changeFilter="changeFilter" />
-        </div>
         <div class="col-md-3 start-xs mobile-filters" v-show="mobileFilters">
           <div class="close-container absolute w-100">
             <i class="material-icons p15 close cl-accent" @click="closeFilters">close</i>
@@ -57,7 +57,7 @@
             {{ $t('Filter') }}
           </button-full>
         </div>
-        <div class="col-md-9 px10 border-box products-list">
+        <div class="col-md-12 px10 border-box products-list">
           <p class="col-xs-12 end-md m0 pb20 cl-secondary">
             {{ $t('{count} items', { count: getCategoryProductsTotal }) }}
           </p>
@@ -252,7 +252,7 @@ export default {
 
   @media (max-width: 64em) {
     .products-list {
-      max-width: 530px;
+      /*max-width: 530px;*/
     }
   }
 
