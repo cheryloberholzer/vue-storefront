@@ -188,7 +188,13 @@
             v-model.trim="payment.phoneNumber"
             autocomplete="tel"
           />
-
+          <base-checkbox
+            class="col-xs-12 mb15"
+            id="wrapAsGift"
+            v-model="wrapAsGift"
+          >
+            {{ $t('Wrap products as a Gift') }}
+          </base-checkbox>
           <base-checkbox
             class="col-xs-12 mb15"
             id="generateInvoiceCheckbox"
@@ -298,6 +304,9 @@
               <span class="pr15">{{ payment.phoneNumber }}</span>
               <tooltip>{{ $t('Phone number may be needed by carrier') }}</tooltip>
             </div>
+            <p v-if="wrapAsGift">
+              <strong>{{ $t('Wrap products as a gift.') }}</strong>
+            </p>
             <p v-if="generateInvoice">
               {{ payment.company }} {{ payment.taxId }}
             </p>

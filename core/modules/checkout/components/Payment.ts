@@ -18,7 +18,8 @@ export const Payment = {
       payment: this.$store.getters['checkout/getPaymentDetails'],
       generateInvoice: false,
       sendToShippingAddress: false,
-      sendToBillingAddress: false
+      sendToBillingAddress: false,
+      wrapAsGift: false
     }
   },
   computed: {
